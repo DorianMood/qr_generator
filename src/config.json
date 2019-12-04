@@ -1,0 +1,19 @@
+{
+	"shops": [
+		{
+			"name": "aliexpress",
+			"link": "aliexpress.com",
+			"selector": "#price_selector"
+		},
+		{
+			"name": "taobao",
+			"link": "taobao.com",
+			"selector": "#price_selector"
+		},
+		{
+			"name": "ebay",
+			"link": "ebay.com",
+			"selector": "#price_selector"
+		}
+	]
+}
