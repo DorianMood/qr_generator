@@ -1,8 +1,4 @@
 import { Store } from "webext-redux";
-import reducers from '../../background/store';
-
-console.log('Content script start.');
-
 
 const config = {
 	"shops": [
@@ -10,47 +6,63 @@ const config = {
 			"name": "aliexpress",
 			"link": "aliexpress.com",
 			"selector": "div.product-price-current span.product-price-value"
+		},
+		{
+			"name": "taobao",
+			"link": "taobao.com",
+			"selector": "#J_PromoPriceNum"
 		}
 	]
 }
-
-let currentShop: {name: string , link:string , selector: string} = {
-	name: '',
-	link: '',
-	selector: ''
-};
-if (document.URL.includes(config.shops[0].link)) {
-	console.log(`Website: ${config.shops[0].name}`);
-	currentShop = config.shops[0];
+const getCurrentStore = () => {
+	let current: { name: string, link: string, selector: string } = {
+		name: '',
+		link: '',
+		selector: ''
+	};
+	config.shops.forEach(shop => {
+		if (document.URL.includes(shop.link))
+			current = shop;
+	});
+	return current;
 }
 
-const element = document.querySelector(currentShop.selector);
+var currentShop = getCurrentStore();
+console.log(`Website: ${currentShop.name}`);
+
+const element: HTMLElement | null = document.querySelector(currentShop.selector);
 const payload = {
 	link: document.URL,
-	content: element.innerText,
-	price: Number.parseFloat(element.innerText)
+	content: element ? element.innerText : '',
+	price: Number.parseFloat(element ? element.innerText : '0')
 }
 
 const store = new Store();
 
-store.ready().then(() => {
-	console.log('Store ready.');
-}).catch(() => {
-	console.log('Store did not created.');
-});
+window.addEventListener('focus', () => {
+	document.body.click();
+	currentShop = getCurrentStore();
+	console.log(currentShop.name);
+	const element: HTMLElement | null = document.querySelector(currentShop.selector);
+	const payload = {
+		link: document.URL,
+		content: element ? element.innerText : '',
+		price: Number.parseFloat(element ? element.innerText : '0')
+	}
+	store.dispatch({ type: 'DATA_STORE', payload })
+})
+
+store.dispatch({ type: 'DATA_STORE', payload });
 
 
 /*
 //import * as React from 'react';
 //import ReactDOM from 'react-dom';
 //import { Provider } from 'react-redux';
-import { Store } from 'webext-redux';
 //import CounterApp from './containers/CounterApp';
-
 import { createDomAnchor } from '../../scripts/dom';
 
 createDomAnchor('counter-root');
-const store = new Store();
 
 store.ready().then(() => {
 	ReactDOM.render(

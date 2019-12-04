@@ -7,7 +7,10 @@ import reducers, { loadState } from './store';
 //window[DEV_TOOLS] && window[DEV_TOOLS]();
 
 const preloadedState = loadState();
-const store = createStore(reducers, preloadedState);
+const store = createStore(
+	reducers,
+	preloadedState,
+	(window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
 
 configureApp(store);
 wrapStore(store);
