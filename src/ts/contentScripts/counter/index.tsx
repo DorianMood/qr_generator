@@ -19,9 +19,9 @@ const config = {
 		{
 			"name": "ebay",
 			"link": "ebay",
-			"selector": "#prcIsum",
+			"selector": ".notranslate",
 			"imageSelector": "#icImg",
-			"titleSelector": ".it-ttl"
+			"titleSelector": "#itemTitle"
 		}
 	]
 }
