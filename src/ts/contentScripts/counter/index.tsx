@@ -19,7 +19,7 @@ const config = {
 		{
 			"name": "ebay",
 			"link": "ebay",
-			"selector": "#convbidPrice",
+			"selector": "#prcIsum",
 			"imageSelector": "#icImg",
 			"titleSelector": ".it-ttl"
 		}
@@ -89,9 +89,8 @@ window.addEventListener('focus', () => {
 	}
 	store.dispatch({ type: 'DATA_STORE', payload })
 })
-console.log('before dispatch')
+console.log(`before dispatch data: ${payload}`);
 store.dispatch({ type: 'DATA_STORE', payload });
-
 
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -104,7 +103,7 @@ createDomAnchor('counter-root');
 store.ready().then(() => {
 	ReactDOM.render(
 		<Provider store={store}>
-			<CounterApp />
+			{ currentShop.name !== '' ? (<CounterApp />) : (<></>) }
 		</Provider>
 		, document.getElementById('counter-root'));
 });

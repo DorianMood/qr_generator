@@ -27,7 +27,7 @@
 	},
 	"browser_action": {
 		"default_title": "DorianMood monitor",
-		"default_icon": "assets/icon-48.png",
+		"default_icon": "assets/icon-32.png",
 		"default_popup": "popup.html"
 	},
 	"options_ui": {
