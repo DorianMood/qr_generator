@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import styled, { ThemeProvider } from 'styled-components';
 import { IAppState } from '../../../background/store';
 import { themes, ThemeTypes } from '../../../components/styles/themes';
-import Counter from '../../../containers/Counter';
+import Qr from '../../../containers/Qr';
 
 interface ICounterApp {
 	theme: ThemeTypes;
@@ -18,7 +18,7 @@ class CounterApp extends React.Component<ICounterApp> {
 			<ThemeProvider theme={themes[this.props.theme]}>
 				<React.Fragment>
 					<CounterAppContainer>
-						<Counter />
+						<Qr />
 					</CounterAppContainer>
 				</React.Fragment>
 			</ThemeProvider>
@@ -36,9 +36,17 @@ export default connect(mapStateToProps)(CounterApp);
 
 const CounterAppContainer = styled('div')`
 	position: fixed;
-	z-index: 9;
+	z-index: 99999999999;
 	bottom: 0;
 	right: 0;
+	margin-right: -320px;
 	background-color: ${p => p.theme.backgroundColor};
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: auto;
+	padding: 20px;
+
+	&:hover {
+		margin-right: 0px;
+		transition: 0.3s;
+	}
 `;

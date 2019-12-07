@@ -21,13 +21,23 @@ class Qr extends React.Component<IQrProps> {
 	}
 
 	render() {
-		return (
-			<CounterContainer >
+		let content = this.props.data.content === '' ?
+		(<>
+		<h1>This website is not supported.</h1>
+		</>) :
+		(<>
+		
+		<h1>Here is your QR. Scan it via App.</h1>
 				<QRCode
                     value={JSON.stringify(this.props.data)}
                     qrStyle="dots"
                     size={300}
 				/>
+		</>);
+
+		return (
+			<CounterContainer >
+				{content}
 			</CounterContainer>
 		);
 	}
