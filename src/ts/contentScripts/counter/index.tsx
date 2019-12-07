@@ -6,28 +6,33 @@ const config = {
 			"name": "aliexpress",
 			"link": "aliexpress.com",
 			"selector": "div.product-price-current span.product-price-value",
-			"imageSelector": ".magnifier-image"
+			"imageSelector": ".magnifier-image",
+			"titleSelector": ".product-title"
 		},
 		{
 			"name": "taobao",
 			"link": "taobao.com",
 			"selector": "#J_PromoPriceNum",
-			"imageSelector": "#J_ImgBooth"
+			"imageSelector": "#J_ImgBooth",
+			"titleSelector": ".tb-main-title"
 		},
 		{
 			"name": "ebay",
 			"link": "ebay.com",
 			"selector": "#convbidPrice",
-			"imageSelector": "icImg"
+			"imageSelector": ".icImg",
+			"titleSelector": ".it-ttl"
 		}
 	]
 }
 
 const getCurrentStore = () => {
-	let current: { name: string, link: string, selector: string } = {
+	let current: { name: string, link: string, selector: string, imageSelector: string, titleSelector: string } = {
 		name: '',
 		link: '',
-		selector: ''
+		selector: '',
+		imageSelector: '',
+		titleSelector: ''
 	};
 	config.shops.forEach(shop => {
 		if (document.URL.includes(shop.link))
@@ -42,14 +47,20 @@ console.log(`Website: ${currentShop.name}`);
 let payload = {
 	link: '',
 	content: '',
-	price: 0
+	price: 0,
+	imageLink: '',
+	title: ''
 }
 if (currentShop.name !== '') {
 	const element: HTMLElement | null = document.querySelector(currentShop.selector);
+	const image: HTMLElement | null = document.querySelector(currentShop.imageSelector);
+	const title: HTMLElement | null = document.querySelector(currentShop.titleSelector);
 	payload = {
 		link: document.URL,
 		content: element ? element.innerText : '',
-		price: Number.parseFloat(element ? element.innerText : '0')
+		price: Number.parseFloat(element ? element.innerText : '0'),
+		imageLink: image ? image!.attributes!.getNamedItem('src')!.value : '',
+		title: title ? title.innerText : ''
 	}
 }
 
@@ -60,14 +71,20 @@ window.addEventListener('focus', () => {
 	let payload = {
 		link: '',
 		content: '',
-		price: 0
+		price: 0,
+		imageLink: '',
+		title: ''
 	}
 	if (currentShop.name !== '') {
 		const element: HTMLElement | null = document.querySelector(currentShop.selector);
+		const image: HTMLElement | null = document.querySelector(currentShop.imageSelector);
+		const title: HTMLElement | null = document.querySelector(currentShop.titleSelector);
 		payload = {
 			link: document.URL,
 			content: element ? element.innerText : '',
-			price: Number.parseFloat(element ? element.innerText : '0')
+			price: Number.parseFloat(element ? element.innerText : '0'),
+			imageLink: image ? image!.attributes!.getNamedItem('src')!.value : '',
+			title: title ? title.innerText : ''
 		}
 	}
 	store.dispatch({ type: 'DATA_STORE', payload })

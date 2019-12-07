@@ -6,4 +6,10 @@ export type DataPayload = IData;
 
 export type DataActions = Action<DataActionTypes, DataPayload>;
 
-export const dataStore = (payload: DataPayload = {link: '', content: '', price: 0}) => ({ type: 'DATA_STORE', payload });
+export const dataStore = (payload: DataPayload = {
+	link: '',
+	content: '',
+	price: 0,
+	imageLink: '',
+	title: ''
+}) => ({ type: 'DATA_STORE', payload });
