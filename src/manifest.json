@@ -1,8 +1,8 @@
 {
-	"name": "Web Extension Starter",
-	"author": "ymdevs",
+	"name": "DorianMood monitor",
+	"author": "nekithockey75",
 	"version": "1.0.0",
-	"description": "A web browser extension starter - based on Typescript, React, Redux, Styled-Component, Webpack, and more. Runs on Chrome and Firefox.",
+	"description": "A web browser extension to generate QR codes for DorianMood content monitoring APP.",
 	"icons": {
 		"128": "assets/icon-128.png"
 	},

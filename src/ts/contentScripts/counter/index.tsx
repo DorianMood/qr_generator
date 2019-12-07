@@ -5,12 +5,20 @@ const config = {
 		{
 			"name": "aliexpress",
 			"link": "aliexpress.com",
-			"selector": "div.product-price-current span.product-price-value"
+			"selector": "div.product-price-current span.product-price-value",
+			"imageSelector": ".magnifier-image"
 		},
 		{
 			"name": "taobao",
 			"link": "taobao.com",
-			"selector": "#J_PromoPriceNum"
+			"selector": "#J_PromoPriceNum",
+			"imageSelector": "#J_ImgBooth"
+		},
+		{
+			"name": "ebay",
+			"link": "ebay.com",
+			"selector": "#convbidPrice",
+			"imageSelector": "icImg"
 		}
 	]
 }

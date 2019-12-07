@@ -23,7 +23,9 @@ class Qr extends React.Component<IQrProps> {
 	render() {
 		let content = this.props.data.content === '' ?
 		(<>
-		<h1>This website is not supported.</h1>
+		<h1 style={{
+		textAlign: 'center'
+		}}>This website is not supported.</h1>
 		</>) :
 		(<>
 		
@@ -54,7 +56,7 @@ export default connect(mapStateToProps)(Qr);
 const CounterContainer = styled('div')`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	min-width: 100px;
 	padding: 5px;
