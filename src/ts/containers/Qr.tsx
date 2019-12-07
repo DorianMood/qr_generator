@@ -29,11 +29,13 @@ class Qr extends React.Component<IQrProps> {
 		</>) :
 		(<>
 		
-		<h1>Here is your QR. Scan it via App.</h1>
+		<h1 style={{
+		textAlign: 'center'
+		}}>Here is your QR. Scan it via App.</h1>
 				<QRCode
                     value={JSON.stringify(this.props.data)}
                     qrStyle="dots"
-                    size={300}
+                    size={400}
 				/>
 		</>);
 

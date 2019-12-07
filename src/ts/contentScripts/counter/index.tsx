@@ -18,9 +18,9 @@ const config = {
 		},
 		{
 			"name": "ebay",
-			"link": "ebay.com",
+			"link": "ebay",
 			"selector": "#convbidPrice",
-			"imageSelector": ".icImg",
+			"imageSelector": "#icImg",
 			"titleSelector": ".it-ttl"
 		}
 	]

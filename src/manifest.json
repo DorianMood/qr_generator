@@ -26,7 +26,7 @@
 		"persistent": true
 	},
 	"browser_action": {
-		"default_title": "Web Extension Starter",
+		"default_title": "DorianMood monitor",
 		"default_icon": "assets/icon-48.png",
 		"default_popup": "popup.html"
 	},
