@@ -25,6 +25,7 @@ const config = {
 		}
 	]
 }
+const regexp: RegExp = /([0-9]+(\.[0-9]*)*)/;
 
 const getCurrentStore = () => {
 	let current: { name: string, link: string, selector: string, imageSelector: string, titleSelector: string } = {
@@ -58,7 +59,7 @@ if (currentShop.name !== '') {
 	payload = {
 		link: document.URL,
 		content: element ? element.innerText : '',
-		price: Number.parseFloat(element ? element.innerText : '0'),
+		price: Number.parseFloat(element ? regexp.exec(element.innerText)![0] : '0'),
 		imageLink: image ? image!.attributes!.getNamedItem('src')!.value : '',
 		title: title ? title.innerText : ''
 	}
@@ -82,7 +83,7 @@ window.addEventListener('focus', () => {
 		payload = {
 			link: document.URL,
 			content: element ? element.innerText : '',
-			price: Number.parseFloat(element ? element.innerText : '0'),
+			price: Number.parseFloat(element ? regexp.exec(element.innerText)![0] : '0'),
 			imageLink: image ? image!.attributes!.getNamedItem('src')!.value : '',
 			title: title ? title.innerText : ''
 		}
