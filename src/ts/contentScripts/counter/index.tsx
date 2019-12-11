@@ -22,9 +22,17 @@ const config = {
 			"selector": ".notranslate",
 			"imageSelector": "#icImg",
 			"titleSelector": "#itemTitle"
+		},
+		{
+			"name": "tmall",
+			"link": ".tmall.com",
+			"selector": ".tm-price",
+			"imageSelector": "#J_ImgBooth",
+			"titleSelector": ".tb-detail-hd h1"
 		}
 	]
 }
+
 const regexp: RegExp = /([0-9]+(\.[0-9]*)*)/;
 
 const getCurrentStore = () => {
@@ -104,7 +112,7 @@ createDomAnchor('counter-root');
 store.ready().then(() => {
 	ReactDOM.render(
 		<Provider store={store}>
-			{ currentShop.name !== '' ? (<CounterApp />) : (<></>) }
+			{ payload.content !== '' ? (<CounterApp />) : (<></>) }
 		</Provider>
 		, document.getElementById('counter-root'));
 });
