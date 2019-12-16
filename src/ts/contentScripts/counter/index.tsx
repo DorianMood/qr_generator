@@ -12,7 +12,7 @@ const config = {
 		{
 			"name": "taobao",
 			"link": "taobao.com",
-			"selector": "#J_PromoPriceNum",
+			"selector": "#J_PromoPriceNum,#J_StrPrice>.tb-rmb-num",
 			"imageSelector": "#J_ImgBooth",
 			"titleSelector": ".tb-main-title"
 		},

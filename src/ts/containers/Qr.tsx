@@ -24,13 +24,19 @@ class Qr extends React.Component<IQrProps> {
 		let content = this.props.data.content === '' ?
 		(<>
 		<h1 style={{
-		textAlign: 'center'
+			display: 'block',
+			fontSize: '2em !important',
+			fontWeight: 'bold',
+			textAlign: 'center'
 		}}>This website is not supported.</h1>
 		</>) :
 		(<>
 		
 		<h1 style={{
-		textAlign: 'center'
+			display: 'block',
+			fontSize: '2em',
+			fontWeight: 'bold',
+			textAlign: 'center'
 		}}>Here is your QR. Scan it via App.</h1>
 				<QRCode
                     value={JSON.stringify(this.props.data)}
